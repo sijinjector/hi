@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wattpad-Style Love Story</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif; /* Romantic serif font */
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%); /* Soft pink gradient */
+            color: #333;
+            margin: 0;
+            padding: 0;
+            animation: fadeIn 2s ease-in-out;
+            position: relative;
+            overflow-x: hidden;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        /* Floating hearts animation */
+        .heart {
+            position: absolute;
+            color: #ff6b9d;
+            font-size: 20px;
+            animation: float 6s linear infinite;
+            opacity: 0.7;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.3); /* Pink shadow */
+            animation: slideUp 1s ease-out;
+            position: relative;
+            z-index: 1;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .title {
+            font-size: 2.5em;
+            color: #e91e63; /* Deep pink */
+            animation: bounceIn 1.5s ease-out;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .author {
+            font-size: 1.2em;
+            color: #ad1457; /* Darker pink */
+            font-style: italic;
+        }
+        .chapter {
+            display: none;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #fce4ec; /* Light pink border */
+            padding-bottom: 20px;
+            animation: slideInRight 0.8s ease-out;
+            background: linear-gradient(to right, rgba(255, 182, 193, 0.1), transparent); /* Subtle pink gradient */
+            border-radius: 10px;
+            padding: 15px;
+        }
+        .chapter.active {
+            display: block;
+        }
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        .chapter.slide-out {
+            animation: slideOutLeft 0.8s ease-in forwards;
+        }
+        @keyframes slideOutLeft {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(-100%); opacity: 0; }
+        }
+        .chapter:hover {
+            transform: scale(1.02);
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2);
+        }
+        .chapter-title {
+            font-size: 1.5em;
+            color: #e91e63;
+            margin-bottom: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .story-text {
+            line-height: 1.8;
+            font-size: 1.1em;
+            text-align: justify;
+        }
+        .story-text p:first-child::first-letter {
+            font-size: 3em;
+            color: #e91e63;
+            float: left;
+            margin-right: 5px;
+            line-height: 0.8;
+        }
+        .buttons {
+            text-align: center;
+            margin-top: 30px;
+        }
+        button {
+            background: linear-gradient(45deg, #ff6b9d, #c44569); /* Pink gradient */
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            margin: 0 10px;
+            border-radius: 25px; /* Rounded for romance */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        button:hover {
+            background: linear-gradient(45deg, #c44569, #ff6b9d);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(255, 105, 180, 0.4);
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            animation: none;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating hearts -->
+    <div class="heart" style="left: 10%; animation-delay: 0s;">♥</div>
+    <div class="heart" style="left: 20%; animation-delay: 1s;">♥</div>
+    <div class="heart" style="left: 30%; animation-delay: 2s;">♥</div>
+    <div class="heart" style="left: 40%; animation-delay: 3s;">♥</div>
+    <div class="heart" style="left: 50%; animation-delay: 4s;">♥</div>
+    <div class="heart" style="left: 60%; animation-delay: 5s;">♥</div>
+    <div class="heart" style="left: 70%; animation-delay: 6s;">♥</div>
+    <div class="heart" style="left: 80%; animation-delay: 7s;">♥</div>
+    <div class="heart" style="left: 90%; animation-delay: 8s;">♥</div>
+
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Love at first sight</h1>
+            <p class="author">By: Siji</p>
+        </div>
+        
+        <div class="chapter active" id="chapter1">
+            <h2 class="chapter-title">Chapter 1: </h2>
+            <div class="story-text">
+                <p>Sa paaralan ng Montreal University nag aaral si Kyo Yamaguchi, si Kyo ay isang lalaking mapili sa babae at masungit pero dating babaero. Isang araw ng sabado naganap ang program nila
+                  sa NSTP kung saan lahat ng studyante sa Montreal ay kailangan pumunta sa kanilang gym. Habang abala ang lahat na nakikinig sa nag sasalita sa propgram si Kyo naman ay palaging tumatayo para mag cr. nung naglakad si Kyo ay may nakita syang isang cute na babae
+                  at sobrang ganda. (Kyo POV): natulala/* "grabeeeeee gwapaha ana niya uyyy unsa kaya name ana niya" - nagsalita sa utak. napatulala nalang sya at nakalimotan na umihi, 
+                  bumalik sya sa kanyang upuan at natulog. Nung natapos na ang program ay hinanap nya ang babae, pumunta sya sa likoran at sa di inaasahan ay nakita nya ang babae, napa sabi sya sa 
+                  mga kaibigan nya na may nakita syang cute na magandang babae. (Kyo): "baiii awa ang naa saakong likod na naka puti nga babae gwapa kaayo cute pajud kaayo yagaa naa nakoy
+                  motivation". hinanap ng mga kaibigan nya kung sino minimean nya at dun nakit ni Lev (friend ni Kyo). (Kyo): "Lev awa gwapa kaayo pangayoa daw ang FB". (Lev): "Hala oh gwapa jud diay kaayo part". At paguwian ay pinuntahan ni lev ang babae at tinanong ang fb habang ako nasa likod
+                  tumitingin.
+                </p>
+                <p>Nakuha na ni Lev ang fb pero di muna tinanong ni Kyo ano fb nun. makalipas ang ilang araw ay biglang nag yabang si Lev na nag chachat na pala sila nung babae
+                  at dun nawalan si Kyo ng gana kasi naunahan ng tropa.
+                </p>
+            </div>
+        </div>
+        
+        <div class="chapter" id="chapter2">
+            <h2 class="chapter-title">Chapter 2: Medical</h2>
+            <div class="story-text">
+                <p>Makalipas ang ilang araw ay unti unti nang nakakalimotan ni Kyo ang babae. Nung araw na ng medical nila sa school nagka sabayan sa linya yung nakita ni Kyo na magandang babae pero hindi na nya tinignan ito na para bang hindi naging crush.
+                  Selos na selos si Kyo dahil nung nasa likod nila ang babae ay biglag kinausap ni Lev. (Lev): "Hi Shin!". at sumagot naman ang babae. (Shin): "Hello". Pero kahit gannon ay di nagpa apekto si Kyo.
+                </p>
+                <p>At sa gabing iyon nakita ni Kyo ang fb ng babae dahil dumaan ito sa Suggestion nya sa fb. Ang pangalan ng babae ay Shin Harame, inadd ito ni Kyo pero hindi nya 
+                  chinat.
+                </p>
+            </div>
+        </div>
+        
+        <div class="chapter" id="chapter3">
+            <h2 class="chapter-title">Chapter 3: Pag-asa</h2>
+            <div class="story-text">
+                <p>Makalipas ang ilang araw ay nabalitaan ni Kyo na hindi na pala nag chachat si Lev at Shin. Nung nalaman ni Kyo ang reason ay
+                  nagalit din sya kay shin kahit hindi pa nya alam ang side ni shin. Pero nung nakita ni Kyo ang chat ng babae ay alam nyang mabait ito 
+                  pero nasa maling tao lang. Nagalit din si Kyo kay Lev dahil pinabayaan nya lang na maging ganon ang babae at hindi man lang sya humingi ng
+                  sorry sa personal.
+                </p>
+                <p>Dahil sa nangyare ay kinalimotan muna ni Kyo si shin. Pero isang gabi biglang na boring si Kyo kaya nung nag md si shin ay bigla syang nag chat 
+                  at kunware wrong send. matagal nag reply si shin kaya nung nag reply si shin ay hindi na tumoloy si Kyo sa kanyang plano.
+                </p>
+            </div>
+        </div>
+        
+        <div class="chapter" id="chapter4">
+            <h2 class="chapter-title">Chapter 4: Neon Party</h2>
+            <div class="story-text">
+                <p>Many days passed, Araw na ng Neon Party kung saan mag eenjoy ang mga studyante. Nag bihis ng maayos si Kyo kasi baka raw maraming eabab sa party, Nung nag linya na papunta sa entrance ay sa di inaasahan natagpuan nya ulit si Shin na para bang tinadhana
+                  talaga. Doon bumalik ang feelings ni Kyo kay Shin, di matago ni Kyo ang kilig kaya kunware nag cecellphone sya at tumatawa pero dahil pala sa kilig yun.
+                </p>
+                <p>Noong nasa loob na si Kyo ay hinanap nya si Shin pero tinatawag si Kyo ng mga tropa nya kaya sumunod nalang sya. Noong nag simula na ang battle of the bands ay palaging pumupunta
+                  si Kyo sa Cr baka sakaling maka salubong nya si Shin, pero wala syang Shin na nakita, Kaya nawalan ng pag asa si Kyo na magkita ulit sila dahil sobrang daming tao.
+                </p>
+            </div>
+        </div>
+        
+        <div class="chapter" id="chapter5">
+            <h2 class="chapter-title">Chapter 5: 10% Chance Encounter</h2>
+            <div class="story-text">
+                <p>At nag simula na ang Neon Party. Nag Enjoy nang sobra si Kyo kasama ang mga tropa nya, grabe na ang pawis na lumalabas sa katawan nya. nalibot na nila ang gym pero wala paring makita si Kyo na Shin. Nung huminto na si Kyo sa pag sayaw
+                  ay sa di inaasahang pagkakataon ay biglang nakita ni Kyo si shin at biglang nag play sa utak ni Kyo ang Double take na kanta "In the midst of the crowd I don't see nobody but you", biglang nag slow mo ang paligid ni Kyo at naka focus lang talaga sya kay shin.
+                </p>
+                <p>At doon bumalik ang energy ni Kyo, sumayaw na ito at lumapit pa kela Shin. Pagkatapos ng Party ay di makapaniwala si Kyo sa nangyare na para bang nanaginip lang ito. Nagyabang si Kyo sa mga tropa nya Dahil
+                  naka encounter nya ulit ang kanyang crush.
+                </p>
+            </div>
+        </div>
+        
+        <div class="chapter" id="chapter6">
+            <h2 class="chapter-title">Chapter 6: Same night</h2>
+            <div class="story-text">
+                <p>Pag uwi ni Kyo sa kanilang bahay ay agad nyang chinat si Shin na kunware nanghihinge ito ng video para pang first move. nung nag reply si Shin ay di ma control ni Kyo ang kanyang kilig,
+                  at hanggang sa tumaas na ang kanilang convo na pumupunta na sa ibat ibang topic.
+                </p>
+                <p>Nung isang araw biglang nalungkot si Kyo kasi akala nya iba pinaparinggan ni Shin sa kanyang mga notes at md. pero kahit ganon ay nag paparinig parin si kyo sa mga notes nya. Di ulit matago ni Kyo ang kilig nung nag reply si Shin sa notes nya gamit din notes.
+                  Hanggang sa di na mapigilan ni Kyo ang kanyang sarili at napa chat sya ulit kay Shin at doon na nagpa tuloy ang kanilang talking stage.
+                </p>
+            </div>
+        </div>
+        
+        <div class="chapter" id="chapter7">
+            <h2 class="chapter-title">Chapter 7: getting to know</h2>
+            <div class="story-text">
+                <p>Makalipas ang ilang araw ay nagsisimba na sila ng sabay at nag kikita na rin at palagi ng nag uupdate sa isat isa</p>
+                <p>To be Continueee...... Warning kissing scene!!!!! HAHAHAHHAHAHAHAHAH</p>
+            </div>
+        </div>
+        
+        <div class="buttons">
+            <button id="prevBtn" onclick="prevChapter()" disabled>Previous Chapter</button>
+            <button id="nextBtn" onclick="nextChapter()">Next Chapter</button>
+            <button onclick="alert('Vote & Comment')">Vote & Comment</button>
+        </div>
+    </div>
+
+    <script>
+        let currentChapter = 1;
+        const totalChapters = 7;
+
+        function showChapter(chapterNum) {
+            document.querySelectorAll('.chapter').forEach(ch => {
+                ch.classList.remove('active', 'slide-out');
+            });
+            const chapter = document.getElementById(`chapter${chapterNum}`);
+            chapter.classList.add('active');
+        }
+
+        function nextChapter() {
+            if (currentChapter < totalChapters) {
+                document.getElementById(`chapter${currentChapter}`).classList.add('slide-out');
+                setTimeout(() => {
+                    currentChapter++;
+                    showChapter(currentChapter);
+                    updateButtons();
+                }, 800);
+            }
+        }
+
+        function prevChapter() {
+            if (currentChapter > 1) {
+                document.getElementById(`chapter${currentChapter}`).classList.add('slide-out');
+                setTimeout(() => {
+                    currentChapter--;
+                    showChapter(currentChapter);
+                    updateButtons();
+                }, 800);
+            }
+        }
+
+        function updateButtons() {
+            document.getElementById('prevBtn').disabled = currentChapter === 1;
+            document.getElementById('nextBtn').disabled = currentChapter === totalChapters;
+        }
+
+        showChapter(currentChapter);
+        updateButtons();
+    </script>
+</body>
+</html>
